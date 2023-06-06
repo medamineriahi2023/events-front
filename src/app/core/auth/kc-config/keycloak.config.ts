@@ -3,8 +3,8 @@ import {KeycloakConfig} from "keycloak-js";
 
 const keycloakConfig: KeycloakConfig = {
     url: 'http://localhost:8180',
-    realm: 'central-stamp',
-    clientId: 'central-stamp'
+    realm: 'esprit',
+    clientId: 'e-vent'
 };
 
 export const initializer = (keycloak: KeycloakService) => () =>
