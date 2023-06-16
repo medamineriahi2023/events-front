@@ -8,6 +8,8 @@ import {ConfirmActionDialogData} from "../../modals/models";
 import {
     ConfirmActionDialogComponent
 } from "../../../shared/dialog/confirm-action-dialog/confirm-action-dialog.component";
+import {EditPermissionComponent} from "../../modals/edit-permission/edit-permission.component";
+import {Location} from "../../../models/Location";
 
 @Component({
   selector: 'app-role-table',
@@ -17,6 +19,7 @@ import {
 export class RoleTableComponent {
     displayedColumns: string[] = ['NAME', 'ACTIONS'];
     dataSource: MatTableDataSource<Role>;
+    permissions: Role[]= [];
 
     @Input() filterValue = '';
     @Input() filterPredicate: (data: Role, filter: string) => boolean;
@@ -46,6 +49,7 @@ export class RoleTableComponent {
 
     listenForDataChnages() {
        this.userService.getRoles().subscribe(r => this.dataSource.data = r);
+       this.userService.getAllPermissions().subscribe(r => this.permissions = r);
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -79,12 +83,16 @@ export class RoleTableComponent {
     //         data:role
     //     });
     // }
-    // editPermissions(role : Role) {
-    //     this._matDialog.open(AddEditPermissionsComponent, {
-    //         data : {
-    //             role:role,
-    //             permissions : this.permissions
-    //         }});
-    // }
+    editPermissions(role : Role) {
+        this._matDialog.open(EditPermissionComponent, {
+            data : {
+                role:role,
+                permissions : this.permissions
+            }}).afterClosed().subscribe(res => {
+                if (res){
+                    this.listenForDataChnages();
+                }
+        });
+    }
 }
 

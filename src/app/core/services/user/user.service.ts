@@ -12,7 +12,7 @@ export class UserService extends AbstractServiceService<User>{
     public url: string;
 
   constructor(public http:HttpClient) {
-      super("user" , http);
+      super("users" , http);
   }
 
 
@@ -25,10 +25,27 @@ export class UserService extends AbstractServiceService<User>{
     }
 
     resetPassword(data: any, password: any) {
-
+        return this.http.post(this.url + `/resetPassword/${data}/${password}`, {});
     }
 
     assignRolesToUser(userId: string, rolesId: any[]): Observable<any> {
-        return null;
+        const requestBody = {
+            userId: userId,
+            roleIds: rolesId
+        };
+        return this.http.post(this.url + '/roles/assignRolesToUser', requestBody);
+    }
+
+    assignCompositeRolesForRole(roleId: string, rolesIds: string[]) {
+        const requestBody = {
+            roleId: roleId,
+            rolesIds: rolesIds
+        };
+        return this.http.post(this.url + '/roles/assignPermissionToRole', requestBody);
+    }
+
+    getAllPermissions(): Observable<Role[]>
+    {
+        return this.http.get<Role[]>(this.url +'/roles/permissions')
     }
 }

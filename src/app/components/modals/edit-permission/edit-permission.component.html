@@ -1,8 +1,7 @@
 <div class="flex flex-col flex-auto md:min-w-160 max-w-240 max-h-160">
 
-    <!-- Header -->
     <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary">
-        <div class="text-lg font-medium">Update Members of group: {{data.name}}</div>
+        <div class="text-lg font-medium">Update permissions of a role: {{data.role.name}}</div>
         <button
             mat-icon-button
             (click)="close()"
@@ -19,22 +18,21 @@
         <div class="flex flex-row items-center justify-center">
 
             <mat-form-field class="fuse-mat-dense w-full mr-2">
-                <mat-label class="text-md font-medium">Select Groups to add</mat-label>
-                <mat-select placeholder="all roles" #rolesList multiple >
+                <mat-label class="text-md font-medium">Select permissions to add</mat-label>
+                <mat-select placeholder="all permissions" #rolesList multiple >
                     <div class="flex items-center justify-between w-100">
                         <mat-option (onSelectionChange)="toggleAllSelection($event)" class="mb-4"> </mat-option>
                         <mat-form-field appearance="fill" class="w-100">
                             <input matInput placeholder="Filter" [(ngModel)]="filter" name="filter" class="rounded-lg w-100">
                         </mat-form-field>
                     </div>
-                    <div *ngFor="let role of roles " class="items-center">
-                        <mat-option [value]="role?.id" [ngStyle]="{'display': role.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1 ? 'flex' : 'none'}">
-                            {{role?.name}}
+                    <div *ngFor="let permission of permissions">
+                        <mat-option [value]="permission?.id" [ngStyle]="{'display': permission.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1 ? 'flex' : 'none'}">
+                            {{permission?.name}}
                         </mat-option>
                     </div>
                 </mat-select>
             </mat-form-field>
-
             <button type="button" mat-stroked-button color="accent" class="" (click)="add()">
                 <mat-icon
                     class="icon-size-5"

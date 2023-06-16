@@ -3,29 +3,50 @@ import { FuseNavigationItem } from '@fuse/components/navigation';
 
 export const defaultNavigation: FuseNavigationItem[] = [
     {
-        id   : 'example',
-        title: 'Example',
+        id   : 'operations',
+        title: 'Operations',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/example'
+        link : '/operations'
+    },
+    {
+        id   : 'security',
+        title: 'Security',
+        type : 'basic',
+        icon : 'heroicons_outline:chart-pie',
+        link : '/security'
     }
 ];
 export const compactNavigation: FuseNavigationItem[] = [
     {
-        id   : 'example',
-        title: 'Example',
+        id   : 'operations',
+        title: 'Operations',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/example'
+        link : '/operations'
+    },
+    {
+        id   : 'security',
+        title: 'Security',
+        type : 'basic',
+        icon : 'heroicons_outline:chart-pie',
+        link : '/security'
     }
 ];
 export const futuristicNavigation: FuseNavigationItem[] = [
     {
-        id   : 'example',
-        title: 'Example',
+        id   : 'operations',
+        title: 'Operations',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/example'
+        link : '/operations'
+    },
+    {
+        id   : 'security',
+        title: 'Security',
+        type : 'basic',
+        icon : 'heroicons_outline:chart-pie',
+        link : '/security'
     }
 ];
 export const horizontalNavigation: FuseNavigationItem[] = [

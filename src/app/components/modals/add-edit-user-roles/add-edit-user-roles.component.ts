@@ -16,7 +16,7 @@ export class AddEditUserRolesComponent implements AfterViewInit{
     rolesId : any[] = [];
     filter:string ="";
 
-    @ViewChild('groupsList', {static: false}) groupList: MatSelect;
+    @ViewChild('rolesList', {static: false}) groupList: MatSelect;
 
 
     constructor(
@@ -46,8 +46,8 @@ export class AddEditUserRolesComponent implements AfterViewInit{
         let rolesId : any[];
         this.rolesId = this.groupList.value;
         rolesId = this.rolesId.filter(r => r!== undefined);
-        this.userService.assignRolesToUser(userId, rolesId);
-        this.dialogRef.close();
+        this.userService.assignRolesToUser(userId, rolesId).subscribe(r =>  this.dialogRef.close(true));
+
     }
     close() {
         this.dialogRef.close();

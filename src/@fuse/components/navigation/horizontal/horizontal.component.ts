@@ -70,17 +70,17 @@ export class FuseHorizontalNavigationComponent implements OnChanges, OnInit, OnD
         // Register the navigation component
         this._fuseNavigationService.registerComponent(this.name, this);
 
-        if (this._keycloakService.isUserInRole('superAdmin')) {
-            let adminData: FuseNavigationItem;
-            adminData = {
-                id   : 'dashboard',
-                title: 'Dashboard',
-                type : 'basic',
-                icon : 'heroicons_outline:chart-pie',
-                link : '/dashboard'
-            }
-            this.navigation.push(adminData);
-        }
+        // if (this._keycloakService.isUserInRole('superAdmin')) {
+        //     let adminData: FuseNavigationItem;
+        //     adminData = {
+        //         id   : 'dashboard',
+        //         title: 'Dashboard',
+        //         type : 'basic',
+        //         icon : 'heroicons_outline:chart-pie',
+        //         link : '/dashboard',
+        //     }
+        //     this.navigation.push(adminData);
+        // }
     }
 
     /**

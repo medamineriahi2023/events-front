@@ -14,6 +14,8 @@ import {AddUserComponent} from "../modals/add-user/add-user.component";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatInputModule} from "@angular/material/input";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 
 
@@ -34,7 +36,9 @@ import {MatInputModule} from "@angular/material/input";
         MatButtonModule,
         MatTooltipModule,
         MatCheckboxModule,
-        MatInputModule
+        MatInputModule,
+        MatOptionModule,
+        MatSelectModule
     ]
 })
 export class UserContainerModule { }

@@ -54,6 +54,18 @@
             </mat-error>
         </mat-form-field>
 
+
+        <mat-form-field class="fuse-mat-dense w-full">
+            <mat-label class="text-md font-medium">Location*</mat-label>
+        <mat-select placeholder="Choose location" #locationList >
+            <div *ngFor="let location of locations " class="items-center">
+                <mat-option [value]="location?.id">
+                    {{location?.govName}}
+                </mat-option>
+            </div>
+        </mat-select>
+        </mat-form-field>
+
         <div class="flex flex-row items-center justify-between" *ngIf="operation == 'Save'">
 
             <!--password-->

@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export abstract class AbstractServiceService<T> {
-    url = "http://localhost:8090/";
+    url = "http://localhost:8050/";
   protected constructor(endPoint : string, public http :HttpClient) {
       this.url += endPoint;
   }

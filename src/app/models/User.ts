@@ -1,3 +1,4 @@
+import {Location} from "./Location";
 
 export interface User {
      id : string;
@@ -10,5 +11,7 @@ export interface User {
 
     password:string;
 
-    enabled : boolean
+    active : boolean;
+
+    locationDto : Location;
 }

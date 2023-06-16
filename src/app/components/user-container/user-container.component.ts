@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {User} from "../../models/User";
 import {AddUserComponent} from "../modals/add-user/add-user.component";
+import {
+    NotificationToastServiceService
+} from "../../shared/notificationToastService/notification-toast-service.service";
 
 @Component({
   selector: 'app-user-container',
@@ -12,7 +15,10 @@ export class UserContainerComponent {
     filterValue = '';
     public refresh: boolean;
 
-    constructor(private _matDialog: MatDialog) {
+    constructor(private _matDialog: MatDialog,
+                private notificationToastService: NotificationToastServiceService
+
+                ) {
     }
 
     addUser() {
@@ -20,6 +26,10 @@ export class UserContainerComponent {
         dialog.afterClosed().subscribe(res => {
             this.refresh= true;
         })
+    }
+
+    testToast(){
+        this.notificationToastService.showNotif();
     }
 
     filterPredicate: (data: User, filter: string) => boolean = (user: User, filter: string): boolean => {

@@ -1,5 +1,4 @@
 export const environment = {
     production: false,
-    title: 'Local Environment Heading',
-    apiURL: ''
-  };
+    WS_BASE_URL: 'http://localhost:8050/ws-notification',
+};

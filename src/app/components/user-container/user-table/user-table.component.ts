@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Input, SimpleChanges, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, Input, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatDialog} from "@angular/material/dialog";
@@ -12,14 +12,18 @@ import {Role} from "../../../models/Role";
 import {AddUserComponent} from "../../modals/add-user/add-user.component";
 import {ResetPasswordComponent} from "../../modals/reset-password/reset-password.component";
 import {AddEditUserRolesComponent} from "../../modals/add-edit-user-roles/add-edit-user-roles.component";
+import {WebsocketService} from "../../../core/notification/WebsocketService";
+import {KeycloakService} from "keycloak-angular";
+import {NotificationService} from "../../../core/notification/NotificationService";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-user-table',
   templateUrl: './user-table.component.html',
   styleUrls: ['./user-table.component.scss']
 })
-export class UserTableComponent {
-    displayedColumns: string[] = ['FIRST NAME','LAST NAME', 'USER NAME', 'EMAIL', 'STATUS', 'ACTIONS'];
+export class UserTableComponent implements OnInit, AfterViewInit{
+    displayedColumns: string[] = ['FIRST NAME','LAST NAME', 'USER NAME', 'EMAIL', 'STATUS' ,'ROLES', 'ACTIONS'];
     dataSource: MatTableDataSource<User>;
     @Input() refresh :boolean;
     @Input() filterValue = '';
@@ -29,10 +33,14 @@ export class UserTableComponent {
 
     users: User[] = [];
     roles: Role[];
+    private topic: string;
 
     constructor(private _cdRef: ChangeDetectorRef,
+                private keycloakService: KeycloakService,
                 private _matDialog: MatDialog,
-                private userService:UserService
+                private userService:UserService,
+                private webSocketService:WebsocketService,
+                private notificationService:NotificationService
     ) {
 
         this.dataSource = new MatTableDataSource();
@@ -111,13 +119,16 @@ export class UserTableComponent {
     // }
     //
     edit_user_roles(user: User) {
-        this._matDialog.open(AddEditUserRolesComponent, {
+        const dialogRef = this._matDialog.open(AddEditUserRolesComponent, {
                 data: {
                     fix: user,
                     roles: this.roles
                 }
             }
         );
+        dialogRef.afterClosed().subscribe(res => {
+                this.listenForDataChnages();
+        });
     }
     //
     resetPassword(user: User){
@@ -131,9 +142,11 @@ export class UserTableComponent {
          this._matDialog.open(AddUserComponent, {
            data : row
          }).afterClosed().subscribe(res =>{
+             if (res)
              this.listenForDataChnages();
          })
 
     }
+
 
 }

@@ -26,7 +26,7 @@ import { ResetPasswordComponent } from './components/modals/reset-password/reset
 import { AddEditUserRolesComponent } from './components/modals/add-edit-user-roles/add-edit-user-roles.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
-
+import { EditPermissionComponent } from './components/modals/edit-permission/edit-permission.component';
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
     scrollPositionRestoration: 'enabled'
@@ -37,6 +37,7 @@ const routerConfig: ExtraOptions = {
         AppComponent,
         ResetPasswordComponent,
         AddEditUserRolesComponent,
+        EditPermissionComponent,
     ],
     imports: [
         BrowserModule,
