@@ -5,6 +5,7 @@ import {AddUserComponent} from "../modals/add-user/add-user.component";
 import {
     NotificationToastServiceService
 } from "../../shared/notificationToastService/notification-toast-service.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-user-container',
@@ -29,8 +30,7 @@ export class UserContainerComponent {
     }
 
     testToast(){
-        this.notificationToastService.showNotif();
-    }
+        this.notificationToastService.showNotif();  }
 
     filterPredicate: (data: User, filter: string) => boolean = (user: User, filter: string): boolean => {
         const keys = ['firstName','lastName','username', 'status', 'email'];

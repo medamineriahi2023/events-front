@@ -11,7 +11,8 @@ import {KeycloakService} from "keycloak-angular";
 @Component({
     selector     : 'modern-layout',
     templateUrl  : './modern.component.html',
-    encapsulation: ViewEncapsulation.None
+    styleUrls: ["modern.component.scss"],
+    encapsulation: ViewEncapsulation.None,
 })
 export class ModernLayoutComponent implements OnInit, OnDestroy
 {
