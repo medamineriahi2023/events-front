@@ -1,6 +1,15 @@
-import {ChangeDetectorRef, Component, Input, SimpleChanges, ViewChild} from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { Role } from 'app/models/Role';
+import {
+    AfterViewInit,
+    ChangeDetectorRef,
+    Component,
+    Input,
+    OnChanges,
+    OnInit,
+    SimpleChanges,
+    ViewChild
+} from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
+import {Role} from 'app/models/Role';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatDialog} from "@angular/material/dialog";
 import {UserService} from "../../../core/services/user/user.service";
@@ -9,17 +18,19 @@ import {
     ConfirmActionDialogComponent
 } from "../../../shared/dialog/confirm-action-dialog/confirm-action-dialog.component";
 import {EditPermissionComponent} from "../../modals/edit-permission/edit-permission.component";
-import {Location} from "../../../models/Location";
+import {AddEditRoleComponent} from "../../modals/add-edit-role/add-edit-role.component";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-role-table',
   templateUrl: './role-table.component.html',
   styleUrls: ['./role-table.component.scss']
 })
-export class RoleTableComponent {
+export class RoleTableComponent implements OnChanges, OnInit, AfterViewInit{
     displayedColumns: string[] = ['NAME', 'ACTIONS'];
     dataSource: MatTableDataSource<Role>;
     permissions: Role[]= [];
+    @Input() refresh : boolean;
 
     @Input() filterValue = '';
     @Input() filterPredicate: (data: Role, filter: string) => boolean;
@@ -29,7 +40,8 @@ export class RoleTableComponent {
 
     constructor(private _cdRef: ChangeDetectorRef,
                 private _matDialog: MatDialog,
-                private userService:UserService
+                private userService:UserService,
+                private messageService:MessageService
     ) {
 
         this.dataSource = new MatTableDataSource();
@@ -48,13 +60,16 @@ export class RoleTableComponent {
     }
 
     listenForDataChnages() {
-       this.userService.getRoles().subscribe(r => this.dataSource.data = r);
+       this.userService.getRoles().subscribe(r =>{ this.dataSource.data = r;  this.refresh = false; });
        this.userService.getAllPermissions().subscribe(r => this.permissions = r);
     }
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes.filterValue) {
             this.filterChange();
+        }
+        if (changes.refresh) {
+            this.listenForDataChnages();
         }
     }
 
@@ -66,23 +81,28 @@ export class RoleTableComponent {
         return this._matDialog.open(ConfirmActionDialogComponent, {
             panelClass: 'confirm-action-dialog',
             data: confirmActionDialogData
-        });
+        })
     }
 
-    // delete(role: Role) {
-    //     const confirmActionDialogData: ConfirmActionDialogData = {
-    //         message: "You really want to delete "+ role.name +" ?",        };
-    //     this.openConfirmActionDialog(confirmActionDialogData).afterClosed().subscribe((res: any[]) => {
-    //         if (res) {
-    //             this.store.dispatch(RoleActions.deleteRole({roleName: role.name}));
-    //         }
-    //     });
-    // }
-    // editRole(role: Role) {
-    //     this._matDialog.open(AddEditRoleComponent, {
-    //         data:role
-    //     });
-    // }
+    delete(role: Role) {
+        const confirmActionDialogData: ConfirmActionDialogData = {
+            message: "You really want to delete "+ role.name +" ?",        };
+        this.openConfirmActionDialog(confirmActionDialogData).afterClosed().subscribe(res => {
+            if (res) {
+                this.userService.deleteRole(role.name).subscribe(e => {
+                    this.listenForDataChnages(); this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Role deleted successfully' });},error => {
+                    this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error });
+                });
+            }
+        });
+    }
+    editRole(role: Role) {
+        this._matDialog.open(AddEditRoleComponent, {
+            data:role
+        }).afterClosed().subscribe(e => {
+            this.listenForDataChnages();
+        });
+    }
     editPermissions(role : Role) {
         this._matDialog.open(EditPermissionComponent, {
             data : {

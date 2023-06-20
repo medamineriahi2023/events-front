@@ -1,6 +1,6 @@
 import {AfterViewInit, ChangeDetectorRef, Component, Input, OnInit, SimpleChanges, ViewChild} from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from "@angular/material/dialog";
 import {UserService} from "../../../core/services/user/user.service";
 import {ConfirmActionDialogData} from "../../modals/models";
@@ -15,12 +15,12 @@ import {AddEditUserRolesComponent} from "../../modals/add-edit-user-roles/add-ed
 import {WebsocketService} from "../../../core/notification/WebsocketService";
 import {KeycloakService} from "keycloak-angular";
 import {NotificationService} from "../../../core/notification/NotificationService";
-import Swal from "sweetalert2";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-user-table',
   templateUrl: './user-table.component.html',
-  styleUrls: ['./user-table.component.scss']
+  styleUrls: ['./user-table.component.scss'],
 })
 export class UserTableComponent implements OnInit, AfterViewInit{
     displayedColumns: string[] = ['FIRST NAME','LAST NAME', 'USER NAME', 'EMAIL', 'STATUS' ,'ROLES', 'ACTIONS'];
@@ -40,7 +40,8 @@ export class UserTableComponent implements OnInit, AfterViewInit{
                 private _matDialog: MatDialog,
                 private userService:UserService,
                 private webSocketService:WebsocketService,
-                private notificationService:NotificationService
+                private notificationService:NotificationService,
+                private messageService:MessageService
     ) {
 
         this.dataSource = new MatTableDataSource();
@@ -50,6 +51,7 @@ export class UserTableComponent implements OnInit, AfterViewInit{
     ngOnInit(): void {
         this.filterChange();
         this.listenForDataChnages();
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
     }
 
     filterChange() {
@@ -93,7 +95,9 @@ export class UserTableComponent implements OnInit, AfterViewInit{
         this.openConfirmActionDialog(confirmActionDialogData).afterClosed().subscribe((res: any[]) => {
             if (res) {
                 this.userService.delete(user.id).subscribe(s => {
+                    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'User is deleted successfully' });
                     this.listenForDataChnages();
+                }, error => {this.messageService.add({ severity: 'error', summary: 'Error', detail: 'User is not deleted' });
                 });
             }
         });

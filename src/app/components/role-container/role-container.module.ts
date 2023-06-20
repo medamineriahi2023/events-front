@@ -10,6 +10,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatButtonModule} from "@angular/material/button";
 import {SharedModule} from "../../shared/shared.module";
+import {ToastModule} from "primeng/toast";
 
 
 
@@ -27,7 +28,8 @@ import {SharedModule} from "../../shared/shared.module";
         MatIconModule,
         MatPaginatorModule,
         MatButtonModule,
-        SharedModule
+        SharedModule,
+        ToastModule
     ]
 })
 export class RoleContainerModule { }

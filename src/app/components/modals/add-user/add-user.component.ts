@@ -7,6 +7,7 @@ import {UserService} from "../../../core/services/user/user.service";
 import {LocationService} from "../../../core/services/location/location.service";
 import {Location} from "../../../models/Location";
 import {MatSelect} from "@angular/material/select";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-add-user',
@@ -28,7 +29,8 @@ export class AddUserComponent implements OnInit, AfterViewInit{
         @Inject(MAT_DIALOG_DATA) public data: any,
         public dialogRef: MatDialogRef<AddUserComponent>,
         private userService:UserService,
-        private locationService: LocationService
+        private locationService: LocationService,
+        private messageService:MessageService
     ) {
         this.locationService.getAll().subscribe(e => {this.locations =e });
 
@@ -73,12 +75,14 @@ export class AddUserComponent implements OnInit, AfterViewInit{
         if (this.operation === "Save"){
             location.id = this.locationList.value;
             this.user.locationDto = location;
-            this.userService.save(this.user).subscribe(u => this.dialogRef.close(true));
+            this.userService.save(this.user).subscribe(u => { this.messageService.add({ severity: 'success', summary: 'Success', detail: 'User added successfully' });this.dialogRef.close(true)},
+                error => {this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error });});
         }else {
             location.id = this.data?.locationDto?.id;
             this.user.locationDto = location;
             this.user.id = this.data?.id;
-            this.userService.update(this.user).subscribe(u => this.dialogRef.close(true));
+            this.userService.update(this.user).subscribe(u  => { this.messageService.add({ severity: 'success', summary: 'Success', detail: 'User edited successfully' });this.dialogRef.close(true)},
+                error => {this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error });});
         }
 
 

@@ -7,6 +7,7 @@ import { Navigation } from 'app/core/navigation/navigation.types';
 import { NavigationService } from 'app/core/navigation/navigation.service';
 import { Store } from '@ngrx/store';
 import {KeycloakService} from "keycloak-angular";
+import {OverlayPanel} from "primeng/overlaypanel";
 
 @Component({
     selector     : 'modern-layout',
@@ -21,6 +22,11 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
     private _unsubscribeAll: Subject<any> = new Subject<any>();
     isAuthenticated: boolean = false;
     public kcUser: any;
+    visible: boolean = false;
+
+    showDialog() {
+        this.visible = !this.visible;
+    }
     /**
      * Constructor
      */
@@ -106,4 +112,5 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
             navigation.toggle();
         }
     }
+
 }

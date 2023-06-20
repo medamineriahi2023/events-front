@@ -16,6 +16,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatInputModule} from "@angular/material/input";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import {ToastModule} from "primeng/toast";
 
 
 
@@ -38,7 +39,8 @@ import {MatSelectModule} from "@angular/material/select";
         MatCheckboxModule,
         MatInputModule,
         MatOptionModule,
-        MatSelectModule
+        MatSelectModule,
+        ToastModule
     ]
 })
 export class UserContainerModule { }

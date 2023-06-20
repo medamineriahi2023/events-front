@@ -27,6 +27,8 @@ import { AddEditUserRolesComponent } from './components/modals/add-edit-user-rol
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import { EditPermissionComponent } from './components/modals/edit-permission/edit-permission.component';
+import { AddEditRoleComponent } from './components/modals/add-edit-role/add-edit-role.component';
+import {MessageService} from "primeng/api";
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
     scrollPositionRestoration: 'enabled'
@@ -38,6 +40,7 @@ const routerConfig: ExtraOptions = {
         ResetPasswordComponent,
         AddEditUserRolesComponent,
         EditPermissionComponent,
+        AddEditRoleComponent,
     ],
     imports: [
         BrowserModule,
@@ -62,7 +65,9 @@ const routerConfig: ExtraOptions = {
     ],
     bootstrap   : [
         AppComponent
-    ]
+    ],
+    providers: [MessageService]
+
 })
 export class AppModule
 {

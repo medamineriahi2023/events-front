@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Role} from "../../models/Role";
 import {MatDialog} from "@angular/material/dialog";
+import {AddEditRoleComponent} from "../modals/add-edit-role/add-edit-role.component";
 
 @Component({
   selector: 'app-role-container',
@@ -9,13 +10,16 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class RoleContainerComponent {
     filterValue = '';
+    public refresh: boolean = false;
 
     constructor(private _matDialog: MatDialog) {
     }
 
 
     addRole() {
-        // this._matDialog.open(AddEditRoleComponent, {});
+        this._matDialog.open(AddEditRoleComponent, {}).afterClosed().subscribe(e => {
+                this.refresh = true;
+        });
     }
 
 

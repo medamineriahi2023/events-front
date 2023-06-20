@@ -11,12 +11,15 @@ import { FuseNavigationModule } from '@fuse/components/navigation';
 import { UserModule } from 'app/layout/common/user/user.module';
 import { SharedModule } from 'app/shared/shared.module';
 import { ModernLayoutComponent } from 'app/layout/layouts/horizontal/modern/modern.component';
+import {ToastModule} from "primeng/toast";
+import {ButtonModule} from "primeng/button";
+import {DialogModule} from "primeng/dialog";
 
 @NgModule({
     declarations: [
         ModernLayoutComponent
     ],
-    imports     : [
+    imports: [
         HttpClientModule,
         RouterModule,
         MatButtonModule,
@@ -27,7 +30,10 @@ import { ModernLayoutComponent } from 'app/layout/layouts/horizontal/modern/mode
         FuseLoadingBarModule,
         FuseNavigationModule,
         UserModule,
-        SharedModule
+        SharedModule,
+        ToastModule,
+        ButtonModule,
+        DialogModule
     ],
     exports     : [
         ModernLayoutComponent

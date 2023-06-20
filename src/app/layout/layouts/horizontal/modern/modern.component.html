@@ -59,10 +59,61 @@
         <!-- Components -->
         <div class="flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2">
             <fuse-fullscreen class="hidden md:block"></fuse-fullscreen>
-            <div class="relative">
-                <span class="badge">1</span>
-                <mat-icon [svgIcon]="'heroicons_outline:bell'"></mat-icon>
-            </div>
+            <button
+                mat-icon-button
+            (click)="showDialog()">
+                <div class="relative">
+                    <span class="badge">3</span>
+                    <mat-icon [svgIcon]="'heroicons_outline:bell'"></mat-icon>
+                </div>
+            </button>
+
+
+
+                <p-dialog header="Header" [(visible)]="visible" [style]="{ width: '20vw', top : '5vh', right: '4vw'}" [position]="'top-right'">
+                    <ng-template pTemplate="header">
+                        <span class="text-xl font-bold">Notifications</span>
+                    </ng-template>
+                    <div class="flex-column">
+                    <div class="flex-col w-full items-center justify-content-center my-1.5">
+                        <div class="flex gap-3 justify-center items-center">
+                            <div>
+                                <img src="../../assets/images/avatars/female-01.jpg" style="width : 70px ; height: auto ; border-radius: 100%" >
+                            </div>
+                            <span style="font-size: 14px">amine vous invite pour rejoindre son évenement test</span>
+                        </div>
+                        <div style="width: 100%; display: flex; justify-content: center">
+                            <button mat-button style="background: #4ebb83; color: white">Accept</button> <button mat-button>Ignore</button>
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="flex-col w-full items-center justify-content-center my-1.5">
+                        <div class="flex gap-3 justify-center items-center">
+                            <div>
+                                <img src="../../assets/images/avatars/male-07.jpg" style="width : 70px ; height: auto ; border-radius: 100%" >
+                            </div>
+                            <span style="font-size: 14px">amine vous invite pour rejoindre son évenement test</span>
+                        </div>
+                        <div style="width: 100%; display: flex; justify-content: center">
+                            <button mat-button style="background: #4ebb83; color: white">Accept</button> <button mat-button>Ignore</button>
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="flex-col w-full items-center justify-content-center my-1.5">
+                        <div class="flex gap-3 justify-center items-center">
+                            <div>
+                                <img src="../../assets/images/avatars/male-07.jpg" style="width : 70px ; height: auto ; border-radius: 100%" >
+                            </div>
+                            <span style="font-size: 14px">amine vous invite pour rejoindre son évenement test</span>
+                        </div>
+                        <div style="width: 100%; display: flex; justify-content: center">
+                            <button mat-button style="background: #4ebb83; color: white">Accept</button> <button mat-button>Ignore</button>
+                        </div>
+                    </div>
+                    </div>
+                    <ng-template pTemplate="footer">
+                    </ng-template>
+                </p-dialog>
             <user [kcUser]="kcUser"></user>
         </div>
     </div>

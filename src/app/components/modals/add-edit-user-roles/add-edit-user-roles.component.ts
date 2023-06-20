@@ -4,6 +4,7 @@ import {MatSelect} from "@angular/material/select";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatOption} from "@angular/material/core";
 import {UserService} from "../../../core/services/user/user.service";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-add-edit-user-roles',
@@ -23,7 +24,8 @@ export class AddEditUserRolesComponent implements AfterViewInit{
         public dialogRef: MatDialogRef<AddEditUserRolesComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any,
         private cd: ChangeDetectorRef,
-        private userService:UserService) {
+        private userService:UserService,
+        private messageService: MessageService) {
         data.fix.roles.forEach(g => this.rolesId.push(g.id));
         this.roles = data.roles;
 
@@ -46,7 +48,8 @@ export class AddEditUserRolesComponent implements AfterViewInit{
         let rolesId : any[];
         this.rolesId = this.groupList.value;
         rolesId = this.rolesId.filter(r => r!== undefined);
-        this.userService.assignRolesToUser(userId, rolesId).subscribe(r =>  this.dialogRef.close(true));
+        this.userService.assignRolesToUser(userId, rolesId).subscribe(r =>  {this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Role(s) edited successfully' });this.dialogRef.close(true)}, error =>
+        {this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Role(s) is not assigned' });});
 
     }
     close() {

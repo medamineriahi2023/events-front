@@ -48,4 +48,21 @@ export class UserService extends AbstractServiceService<User>{
     {
         return this.http.get<Role[]>(this.url +'/roles/permissions')
     }
+
+
+    updateRole(role: Role): Observable<Role>
+    {
+        return this.http.put<Role>(this.url + `/roles`, role);
+    }
+
+    saveRole(roleName: string): Observable<Role>
+    {
+        return this.http.post<Role>(this.url + `/roles/${roleName}`, {});
+    }
+
+    deleteRole(roleName: any){
+        return this.http.delete<Role>(this.url + `/roles/${roleName}`);
+
+    }
+
 }

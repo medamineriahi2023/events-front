@@ -4,6 +4,7 @@ import {MatSelect} from "@angular/material/select";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatOption} from "@angular/material/core";
 import {UserService} from "../../../core/services/user/user.service";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-edit-permission',
@@ -23,7 +24,8 @@ export class EditPermissionComponent implements AfterViewInit{
         public dialogRef: MatDialogRef<EditPermissionComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any,
         private cd: ChangeDetectorRef,
-        private userService:UserService) {
+        private userService:UserService,
+        private messageService:MessageService) {
 
         data.role.permissions.forEach(g => this.rolesId.push(g.id));
 
@@ -48,7 +50,11 @@ export class EditPermissionComponent implements AfterViewInit{
         let rolesIds: any[];
         this.rolesId = this.rolesList.value;
         rolesIds = this.rolesId.filter(r => r !== undefined);
-        this.userService.assignCompositeRolesForRole(roleId, rolesIds).subscribe(u => this.dialogRef.close(true));
+        this.userService.assignCompositeRolesForRole(roleId, rolesIds).subscribe(u => { this.dialogRef.close(true);
+            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Permission(s) added successfully' });
+        }, error => {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error });
+        });
 
     }
 
