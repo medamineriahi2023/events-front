@@ -1,22 +1,22 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DashboardComponent} from "./dashboard.component";
+import {UnauthorizedComponent} from "./unauthorized.component";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {Route, RouterModule} from "@angular/router";
 
 
-const dashboard: Route[] = [
-    {path: '**', component: DashboardComponent},
+const routes: Route[] = [
+    {path: '**', component: UnauthorizedComponent},
 
 ];
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [UnauthorizedComponent],
     imports: [
-        RouterModule.forChild(dashboard),
+        RouterModule.forChild(routes),
         CommonModule,
         MatButtonModule,
         MatTooltipModule
     ]
 })
-export class DashboardModule { }
+export class UnauthorizedModule { }

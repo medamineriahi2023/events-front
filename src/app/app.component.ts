@@ -3,6 +3,7 @@ import {KeycloakService} from "keycloak-angular";
 import {WebsocketService} from "./core/notification/WebsocketService";
 import {NotificationService} from "./core/notification/NotificationService";
 import Swal from "sweetalert2";
+import {Router} from "@angular/router";
 
 @Component({
     selector   : 'app-root',
@@ -16,7 +17,8 @@ export class AppComponent implements OnInit
      */
     constructor(private keycloakService:KeycloakService,
                 private webSocketService: WebsocketService,
-                private notificationService:NotificationService)
+                private notificationService:NotificationService,
+                private router : Router)
     {
     }
 
