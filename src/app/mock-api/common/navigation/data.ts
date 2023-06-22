@@ -3,8 +3,8 @@ import { FuseNavigationItem } from '@fuse/components/navigation';
 
 export const defaultNavigation: FuseNavigationItem[] = [
     {
-        id   : 'operations',
-        title: 'Operations',
+        id   : 'forum',
+        title: 'Forum',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
         link : '/operations'
@@ -19,8 +19,8 @@ export const defaultNavigation: FuseNavigationItem[] = [
 ];
 export const compactNavigation: FuseNavigationItem[] = [
     {
-        id   : 'operations',
-        title: 'Operations',
+        id   : 'forum',
+        title: 'Forum',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
         link : '/operations'
@@ -35,8 +35,8 @@ export const compactNavigation: FuseNavigationItem[] = [
 ];
 export const futuristicNavigation: FuseNavigationItem[] = [
     {
-        id   : 'operations',
-        title: 'Operations',
+        id   : 'forum',
+        title: 'Forum',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
         link : '/operations'
@@ -51,8 +51,8 @@ export const futuristicNavigation: FuseNavigationItem[] = [
 ];
 export const horizontalNavigation: FuseNavigationItem[] = [
     {
-        id   : 'operations',
-        title: 'Operations',
+        id   : 'forum',
+        title: 'Forum',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
         link : '/operations'
