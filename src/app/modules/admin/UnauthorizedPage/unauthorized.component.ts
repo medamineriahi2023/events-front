@@ -1,5 +1,9 @@
 import {Component} from '@angular/core';
 import * as Chartist from "chartist";
+interface AutoCompleteCompleteEvent {
+    originalEvent: Event;
+    query: string;
+}
 
 @Component({
   selector: 'app-UnauthorizedPage',
@@ -8,7 +12,15 @@ import * as Chartist from "chartist";
 })
 export class UnauthorizedComponent {
     constructor() { }
+    items: any[] | undefined;
 
+    selectedItem: any;
+
+    suggestions: any[] | undefined;
+
+    search(event: AutoCompleteCompleteEvent) {
+        this.suggestions = [...Array(10).keys()].map(item => event.query + '-' + item);
+    }
     startAnimationForLineChart(chart){
         let seq: any, delays: any, durations: any;
         seq = 0;

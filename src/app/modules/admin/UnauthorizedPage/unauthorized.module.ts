@@ -4,6 +4,8 @@ import {UnauthorizedComponent} from "./unauthorized.component";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {Route, RouterModule} from "@angular/router";
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { FormsModule }   from '@angular/forms';
 
 
 const routes: Route[] = [
@@ -16,7 +18,9 @@ const routes: Route[] = [
         RouterModule.forChild(routes),
         CommonModule,
         MatButtonModule,
-        MatTooltipModule
+        MatTooltipModule,
+        AutoCompleteModule,
+        FormsModule
     ]
 })
 export class UnauthorizedModule { }
