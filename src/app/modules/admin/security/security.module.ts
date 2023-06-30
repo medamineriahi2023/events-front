@@ -18,9 +18,10 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {UserContainerModule} from "../../../components/user-container/user-container.module";
 import {RoleContainerModule} from "../../../components/role-container/role-container.module";
+import {AuthGuard} from "../../../core/auth/kc-config/authGuard";
 
 const securityRoutes: Route[] = [
-    {path: '**', component: SecurityComponent},
+    {path: '**', component: SecurityComponent , canActivate : [AuthGuard] , data :{roles : ["consulter_security"]}},
 
 ];
 

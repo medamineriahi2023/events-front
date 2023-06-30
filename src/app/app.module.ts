@@ -21,7 +21,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatButtonModule} from "@angular/material/button";
-import { DashboardComponent } from './modules/admin/dashboard/dashboard.component';
+import { UnauthorizedComponent } from './modules/admin/UnauthorizedPage/unauthorized.component';
 import { ResetPasswordComponent } from './components/modals/reset-password/reset-password.component';
 import { AddEditUserRolesComponent } from './components/modals/add-edit-user-roles/add-edit-user-roles.component';
 import {MatOptionModule} from "@angular/material/core";

@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import * as Chartist from "chartist";
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
+  selector: 'app-UnauthorizedPage',
+  templateUrl: './unauthorized.component.html',
   styleUrls: ['../../../../assets/css/demo.css','../../../../assets/scss/material-dashboard.scss']
 })
-export class DashboardComponent {
+export class UnauthorizedComponent {
     constructor() { }
 
     startAnimationForLineChart(chart){
