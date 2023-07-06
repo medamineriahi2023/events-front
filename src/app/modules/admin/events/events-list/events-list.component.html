@@ -1,0 +1,13 @@
+<div class="w-full ">
+    <!-- main -->
+
+            
+
+</div>
+<div *ngFor="let event of events">
+    {{event.name}}
+    {{event.description}}
+    <div>
+        <button (click)="archiveEvent()">Archive</button>
+    </div>
+</div>

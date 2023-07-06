@@ -17,7 +17,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
         link : '/security'
     },
     {
-        id   : 'even',
+        id   : 'event',
         title: 'Events',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
@@ -64,7 +64,7 @@ export const futuristicNavigation: FuseNavigationItem[] = [
     },
     {
         id   : 'events',
-        title: 'Eve',
+        title: 'Events',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
         link : '/events'
