@@ -1,13 +1,56 @@
-<div class="w-full ">
+<div class="w-full mainEventsContainer">
     <!-- main -->
+    <div class="filter-container w-full">
+        <!-- Filter options and search bar go here -->
+        <div class="searchContainer">
+            <input
+                type="text"
+                placeholder="Search by name, Category or location"
+                [(ngModel)]="searchTerm"
+            />
+            <button class="search-button" (click)="filterEvents(searchTerm)">
+                Search
+            </button>
+        </div>
 
-            
+        <div class="checkFilters">
+            <label>
+                <input
+                    type="checkbox"
+                    name="filterOption"
+                    value="online"
+                    (change)="getOnlineEvents()"
+                />
+                Online
+            </label>
 
-</div>
-<div *ngFor="let event of events">
-    {{event.name}}
-    {{event.description}}
-    <div>
-        <button (click)="archiveEvent()">Archive</button>
+            <label>
+                <input
+                    type="checkbox"
+                    name="filterOption"
+                    value="presentiel"
+                    (change)="getPresentielEvents()"
+                />
+                On-Site
+            </label>
+        </div>
+    </div>
+
+    <div
+        class="eventsContainer"
+        *ngFor="let event of filtering ? filteredEvents : events"
+    >
+        <div class="eventCard">
+            <a href="#">
+                <img
+                    src="../../../assets/images/avatars/female-01.jpg"
+                    alt="event background image"
+                />
+                <div class="eventDetails">
+                    <h3>{{ event.name }}</h3>
+                    <p>{{ event.description }}</p>
+                </div>
+            </a>
+        </div>
     </div>
 </div>

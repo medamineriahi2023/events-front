@@ -5,26 +5,46 @@ import { Observable } from 'rxjs';
 import { Event } from 'app/models/Event';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
-export class EventsService  extends AbstractServiceService<Event>{
+export class EventsService extends AbstractServiceService<Event> {
+    constructor(public http: HttpClient) {
+        super('event', http);
+    }
 
-  constructor(public http:HttpClient) { 
-    super("event",http)
+    archiveEvent(eventId: number): Observable<Event> {
+        return this.http.put<Event>(this.url + `/archive/${eventId}`, {});
+    }
+
+    rescheduleEvent(
+        eventId: number,
+        dateDebut: Date,
+        dateFin: Date
+    ): Observable<Event> {
+        var event: Event;
+        event.dateDebutEvent = dateDebut;
+        event.dateFinEvent = dateFin;
+        return this.http.put<Event>(this.url + `/reschedule/${eventId}`, {
+            dateDebut,
+            dateFin,
+        });
+    }
+
+    getOnlineEvents(): Observable<Event[]> {
+        return this.http.get<Event[]>(this.url + `/online`);
+    }
+
+    getPresentielEvents(): Observable<Event[]> {
+        return this.http.get<Event[]>(this.url + `/presentiel`);
+    }
+
+    getEventsByName(name: string): Observable<Event[]> {
+        return this.http.get<Event[]>(this.url + `/name/${name}`);
+    }
+    getEventsByCategory(categoryId: string): Observable<Event[]> {
+      return this.http.get<Event[]>(this.url + `/category/${categoryId}`);
   }
-
-  archiveEvent(eventId: number): Observable<Event>{
-    return this.http.put<Event>(this.url + `/archive/${eventId}`, {});
-  }
-
-  rescheduleEvent(eventId: number, dateDebut: Date, dateFin: Date): Observable<Event>{
-    event: Event ;
-    event.date = dateDebut;
-    event.dateFin = dateFin;
-    return this.http.put<Event>(this.url + `/reschedule/${eventId}`, {dateDebut, dateFin});
-  }
-
-  
-
-
+  getEventsByLocation(locationName: string): Observable<Event[]> {
+    return this.http.get<Event[]>(this.url + `/name/${locationName}`);
+}
 }
