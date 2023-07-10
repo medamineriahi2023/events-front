@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { EventsService } from 'app/core/services/events/events.service';
 import { Event } from 'app/models/Event';
 
@@ -8,6 +8,9 @@ import { Event } from 'app/models/Event';
     styleUrls: ['./events-list.component.scss'],
 })
 export class EventsListComponent {
+    @Input()
+    @Output()
+    visible: boolean = false;
     events: Event[];
     filteredEvents: Event[];
     filtering: boolean = false;
@@ -50,5 +53,9 @@ export class EventsListComponent {
                 event.name.toLowerCase().includes(filteredName)
             );
         }
+    }
+
+    showAddUser(){
+        this.visible = true;
     }
 }

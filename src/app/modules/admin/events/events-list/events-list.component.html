@@ -33,15 +33,17 @@
                 />
                 On-Site
             </label>
+            <p-button (click)="showAddUser()" icon="pi pi-user-plus" label="Create" class="mb-2"></p-button>
+
         </div>
     </div>
-
+    
     <div
         class="eventsContainer"
         *ngFor="let event of filtering ? filteredEvents : events"
     >
         <div class="eventCard">
-            <a href="#">
+            <a [routerLink]="[event.id]">
                 <img
                     src="../../../assets/images/avatars/female-01.jpg"
                     alt="event background image"
@@ -54,3 +56,4 @@
         </div>
     </div>
 </div>
+<app-add-event [visible]="visible" ></app-add-event>

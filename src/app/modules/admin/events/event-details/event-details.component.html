@@ -1,0 +1,13 @@
+
+<div style="width:1280px;background: linear-gradient(to left, rgba(255,255,255,0) 20%,
+rgba(255,255,255,1)), url(https://picsum.photos/1280/720);">
+  <div class="bottom-left">Bottom Left</div>
+  <div class="top-left">Top Left</div>
+  <div class="top-right">Top Right</div>
+  <div class="bottom-right">
+    <button mat-raised-button color="primary" (click)="joinEvent()">Request to join</button>
+  </div>
+  <div class="event-name">{{event$.name}}</div>
+  <div class="event-details">{{event$.description}}</div>
+
+</div>

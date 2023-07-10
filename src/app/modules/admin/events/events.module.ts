@@ -4,10 +4,17 @@ import { CommonModule } from '@angular/common';
 import { EventsRoutingModule } from './events-routing.module';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { EventsListComponent } from './events-list/events-list.component';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddEventComponent } from './add-event/add-event.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
+import {ToastModule} from 'primeng/toast';
+import {DialogModule} from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import {DropdownModule} from 'primeng/dropdown';
 @NgModule({
-    declarations: [CreateEventComponent, EventsListComponent],
-    imports: [CommonModule, FormsModule, EventsRoutingModule],
+    declarations: [CreateEventComponent, EventsListComponent, AddEventComponent, EventDetailsComponent],
+    imports: [CommonModule, FormsModule, EventsRoutingModule, ToastModule, DialogModule, ReactiveFormsModule, ButtonModule, DropdownModule],
+    providers: [MessageService, ConfirmationService]
 })
 export class EventsModule {}
