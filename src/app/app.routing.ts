@@ -48,9 +48,6 @@ export const appRoutes: Route[] = [
             {path: 'security', loadChildren: () => import('app/modules/admin/security/security.module').then(m => m.SecurityModule)},
             {path: 'operations', loadChildren: () => import('app/modules/admin/operations/operations.module').then(m => m.OperationsModule)},
             {path: 'unauthorized', loadChildren: () => import('app/modules/admin/UnauthorizedPage/unauthorized.module').then(m => m.UnauthorizedModule)},
-            {path: 'publications', loadChildren: () => import('app/modules/participant/publications/publications.module').then(m => m.PublicationsModule)},
-
         ]
-
     }
 ];
