@@ -1,23 +1,35 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { EventsService } from 'app/core/services/events/events.service';
 import { Event } from 'app/models/Event';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
     selector: 'app-events-list',
     templateUrl: './events-list.component.html',
     styleUrls: ['./events-list.component.scss'],
 })
-export class EventsListComponent {
+export class EventsListComponent implements OnInit {
     @Input()
     @Output()
+    connectedUser: any;
     visible: boolean = false;
     events: Event[];
     filteredEvents: Event[];
     filtering: boolean = false;
     searchTerm: string;
-    constructor(private eventsService: EventsService) {
+    constructor(
+        private eventsService: EventsService,
+        private keycloakService: KeycloakService
+    ) {
         this.eventsService.getAll().subscribe((events) => {
             this.events = events;
+            console.log(this.events);
+        });
+    }
+
+    ngOnInit(): void {
+        this.keycloakService.loadUserProfile().then((e) => {
+            this.connectedUser = e;
         });
     }
 
@@ -55,7 +67,7 @@ export class EventsListComponent {
         }
     }
 
-    showAddUser(){
+    showAddUser() {
         this.visible = true;
     }
 }

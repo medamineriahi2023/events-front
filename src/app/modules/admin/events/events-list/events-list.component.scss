@@ -1,3 +1,5 @@
+@import "primeicons/primeicons.css";
+
 .mainEventsContainer{
     padding: 10px;
 }
@@ -97,37 +99,45 @@
   .eventsContainer {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-  }
+    justify-content: space-between;
+    a{
+      flex-basis: 49%;
+    }
   
   .eventCard {
-    width: 300px;
+    position: relative;
+    gap: 20px;
     border: 1px solid green;
-    // border-radius: 5px;
-    // box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-
+    margin-bottom: 10px;
     display: flex;
-    flex-direction: column;
-    background-color: #f1f1f1;
+    // background-color: #f1f1f1;
     border-radius: 4px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-    max-height: 400px; /* Set the maximum height for the event card */
-  
+    cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
     &:hover {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transform: scale(1.03); /* Increase the scale by 3% */
+
     }
 
+    .icon {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      color: lightgrey;
+    }
     img {
-        width: 100%;
-        height: 200px;
+        width: 100px;
+        height: auto;
         object-fit: cover;
     }
     
       .eventDetails {
         flex-grow: 1;
-
+        padding: 0 20px;
         h3{
             font-size: 18px;
             font-weight: bold;
@@ -139,5 +149,7 @@
 
     
   }
+}
+
 
   
