@@ -33,27 +33,60 @@
                 />
                 On-Site
             </label>
-            <p-button (click)="showAddUser()" icon="pi pi-user-plus" label="Create" class="mb-2"></p-button>
-
+            <p-button
+                (click)="showAddUser()"
+                icon="pi pi-user-plus"
+                label="Create"
+                class="mb-2"
+            ></p-button>
         </div>
     </div>
-    
+
     <div
         class="eventsContainer"
         *ngFor="let event of filtering ? filteredEvents : events"
     >
-        <div class="eventCard">
-            <a [routerLink]="[event.id]">
+        <a [routerLink]="[event.id]">
+            <div class="eventCard">
+                <!-- [style.background-color]="
+                    connectedUser.id === event.organizer.id && 'green'
+                " -->
+                <i
+                    class="pi pi-lock icon"
+                    style="font-size: 24px"
+                    *ngIf="
+                        event.visibility === 'PRIVATE' &&
+                        connectedUser.id !== event.organizer.id
+                    "
+                ></i>
+                <i
+                    class="pi pi-user icon"
+                    style="font-size: 24px"
+                    *ngIf="connectedUser.id === event.organizer.id"
+                ></i>
+                <i
+                    class="pi pi-lock-open icon"
+                    style="font-size: 24px"
+                    *ngIf="
+                        event.visibility !== 'PRIVATE' &&
+                        connectedUser.id !== event.organizer.id
+                    "
+                ></i>
+                <div class="eventDetails">
+                    <h3>{{ event.name }}</h3>
+                    <p>{{ event.description }}</p>
+                    <p>
+                        {{ event.date_debut_event }} to
+                        {{ event.date_fin_event }}
+                    </p>
+                </div>
                 <img
                     src="../../../assets/images/avatars/female-01.jpg"
                     alt="event background image"
                 />
-                <div class="eventDetails">
-                    <h3>{{ event.name }}</h3>
-                    <p>{{ event.description }}</p>
-                </div>
-            </a>
-        </div>
+            </div>
+        </a>
     </div>
 </div>
-<app-add-event [visible]="visible" ></app-add-event>
+
+<app-add-event [visible]="visible"></app-add-event>

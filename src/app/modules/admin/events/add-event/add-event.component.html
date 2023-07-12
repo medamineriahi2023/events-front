@@ -1,38 +1,64 @@
-<p-dialog [style]="{ width: '30vw', height: '360px' }" header="Create Event" [(visible)]="visible">
+<p-dialog
+    [modal]="true"
+    [style]="{ width: '50%', height: '500px' }"
+    header="Create Event"
+    [(visible)]="visible"
+>
     <form [formGroup]="eventForm" (ngSubmit)="onAddEvent()">
-
         <div class="my-2 mt-5 pt-3">
             <span class="p-float-label">
                 <input pInputText id="name" formControlName="name" />
                 <label htmlFor="username">Choose a name for the event</label>
             </span>
         </div>
-        <div class="my-2 mt-5 pt-3">
+        <div class="my-2 mt-5 pt-3 dateContainer">
             <span class="p-float-label">
-                <input pInputText id="dateDebutEvent" formControlName="dateDebutEvent" />
+                <p-calendar
+                    id="dateDebutEvent"
+                    formControlName="dateDebutEvent"
+                    class="date"
+                    [showIcon]="true"
+                ></p-calendar>
+
                 <label htmlFor="dateDebutEvent">Starts in</label>
             </span>
         </div>
-        <div class="my-2 mt-5 pt-3">
+        <div class="my-2 mt-5 pt-3 dateContainer">
             <span class="p-float-label">
-                <input pInputText id="dateFinEvent" formControlName="dateFinEvent" />
+                <p-calendar
+                    id="dateFinEvent"
+                    formControlName="dateFinEvent"
+                    class="date"
+                    [showIcon]="true"
+                ></p-calendar>
+
                 <label htmlFor="dateFinEvent">End in </label>
             </span>
         </div>
         <div class="my-2 mt-5 pt-3">
             <select name="type" id="type" formControlName="type">
                 <option *ngFor="let type of types" [value]="type">
-                    {{Type2LabelMapping[type]}}
+                    {{ Type2LabelMapping[type] }}
                 </option>
             </select>
-
         </div>
         <div class="my-2 mt-5 pt-3">
-            <select name="visibility" id="visibility" formControlName="visibility">
-                <option *ngFor="let visibility of visibilities" [value]="visibilities">
-                    {{Visibility2LabelMapping[visibility]}}
+            <select
+                name="visibility"
+                id="visibility"
+                formControlName="visibility"
+            >
+                <option
+                    *ngFor="let visibility of visibilities"
+                    [value]="visibilities"
+                >
+                    {{ Visibility2LabelMapping[visibility] }}
                 </option>
             </select>
+            <p-dropdown
+                [options]="visibilities"
+                optionLabel="Visibility"
+            ></p-dropdown>
         </div>
         <div class="my-2 mt-5 pt-3">
             <span class="p-float-label">
@@ -42,13 +68,21 @@
         </div>
         <div class="my-2 mt-5 pt-3">
             <span class="p-float-label">
-                <input pInputText id="backgroundImage" formControlName="backgroundImage" />
+                <input
+                    pInputText
+                    id="backgroundImage"
+                    formControlName="backgroundImage"
+                />
                 <label htmlFor="backgroundImage">Background Image</label>
             </span>
         </div>
         <div class="my-2 mt-5 pt-3">
             <span class="p-float-label">
-                <input pInputText id="eventImage" formControlName="eventImage" />
+                <input
+                    pInputText
+                    id="eventImage"
+                    formControlName="eventImage"
+                />
                 <label htmlFor="eventImage">Event Image</label>
             </span>
         </div>
@@ -60,7 +94,11 @@
         </div>
         <div class="my-2 mt-5 pt-3">
             <span class="p-float-label">
-                <input pInputText id="description" formControlName="description" />
+                <input
+                    pInputText
+                    id="description"
+                    formControlName="description"
+                />
                 <label htmlFor="description">Description</label>
             </span>
         </div>
@@ -72,14 +110,18 @@
         </div>
         <div class="my-2 mt-5 pt-3">
             <span class="p-float-label">
-                <input pInputText id="locationName" formControlName="locationName" />
+                <input
+                    pInputText
+                    id="locationName"
+                    formControlName="locationName"
+                />
                 <label htmlFor="locationName">Location Name</label>
             </span>
         </div>
         <div class="my-2 mt-5 pt-3">
             <span class="p-float-label">
-                <input pInputText id="rue" formControlName="rue" />
-                <label htmlFor="rue">Street</label>
+                <input pInputText id="street" formControlName="street" />
+                <label htmlFor="street">Street</label>
             </span>
         </div>
         <div class="my-2 mt-5 pt-3">
@@ -95,13 +137,19 @@
         </p-dropdown> -->
         <!-- Put create button under dropdown to the right -->
         <div class="flex justify-content-end">
-            <p-button styleClass="p-button-text" class="btn btn-block form-control" data-bs-dismiss="modal"
-                [ngClass]="{'btn-secondary' : !eventForm.valid, 'btn-success' : eventForm.valid }"
-                [disabled]="!eventForm.valid" type="submit">
+            <p-button
+                styleClass="p-button-text"
+                class="btn btn-block form-control"
+                data-bs-dismiss="modal"
+                [ngClass]="{
+                    'btn-secondary': !eventForm.valid,
+                    'btn-success': eventForm.valid
+                }"
+                [disabled]="!eventForm.valid"
+                type="submit"
+            >
                 <i class="fa-solid fa-folder-plus"></i> Create
             </p-button>
         </div>
-
-
     </form>
 </p-dialog>
