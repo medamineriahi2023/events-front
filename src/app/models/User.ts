@@ -2,16 +2,16 @@ import {Location} from "./Location";
 
 export interface User {
      id : string;
-    firstName : string;
-    lastName : string;
+    firstName?: string;
+    lastName?: string;
 
-    email: string;
+    email?: string;
 
-    username: string;
+    username?: string;
 
-    password:string;
+    password?:string;
 
-    active : boolean;
+    active?: boolean;
 
-    locationDto : Location;
+    locationDto?: Location;
 }

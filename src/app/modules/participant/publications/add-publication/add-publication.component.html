@@ -1,6 +1,6 @@
 <div class="flex flex-col w-full">
-
-    <div class="w-4/5 mx-auto mt-5">
+<p-toast></p-toast>
+    <form [formGroup]="publicationForm" (ngSubmit)="onAddPublication()" class="w-4/5 mx-auto mt-5">
         <div class="flex w-full" style="justify-content: center">
             <div class="flex-col rounded p-4" style="background: white;" >
             <div class="flex gap-3">
@@ -9,24 +9,22 @@
                 </div>
                 <div>
                     <div style="width: 50vw; height: auto; background: rgba(232,232,232,0.25)" class="rounded-2xl">
-                        <textarea matInput class="w-full p-2" placeholder="What do you think?"></textarea></div>
+                        <textarea matInput class="w-full p-2" placeholder="What do you think?" formControlName="content"></textarea></div>
                 </div>
             </div>
                 <div class="flex">
-                    <div class="flex my-2 items-center justify-content-center over cursor-pointer">
-                        <div style="width: 130px; height: auto; padding : 2px ; border-radius: 10px">
-                            <img src="https://static.xx.fbcdn.net/rsrc.php/v3/y7/r/Ivw7nhRtXyo.png" style="width: 25px; height: auto; display: inline;">
-                            <p style="display: inline; font-size: 14px ; font-family: sans-serif; color: #8a8a8a"> add image</p>
-                        </div>
-                    </div>
+                    <select name="" id="" formControlName="topic">
+                        <option [ngValue]="null" disabled>Select a topic</option>
+                        <option *ngFor="let topic of topics" [ngValue]="topic"  >{{topic2LabelMapping[topic]}}</option>
+                    </select>
                 <div class="flex my-2" style="width: 100% ; justify-content: end">
-                    <button mat-button style="background: #3bab53; color: white ; padding: 5px!important;">Post</button>
+                    <button type="submit" mat-button style="background: #3bab53; color: white ; padding: 5px!important;">Post</button>
                 </div>
                 </div>
             </div>
         </div>
 
         <!-- <reclamation-content [userId]="userId" [op]="operations"></reclamation-content> -->
-    </div>
+    </form>
 
 </div>

@@ -1,56 +1,73 @@
-<div class="row">
-</div>
-<div class="row">
-    <div *ngFor="let publication of publications">
+
+<div class="w-full ">
+        
+        
         <div class="flex flex-col w-full">
-
             <div class="w-4/5 mx-auto mt-5">
-                <div class="flex w-full" style="justify-content: center">
-                    <div class="flex-col rounded p-4" style="background: white;">
-                        <div class="flex gap-3">
-                            <div>
-                                <img src="../../../assets/images/avatars/female-01.jpg"
-                                    style="width: 70px ; height : auto ; border-radius: 100%">
-                            </div>
-                            <div>
-                                <div style="width: 50vw; height: auto;"
-                                    class="rounded-2xl">
-                                    <p>{{publication.content}}</p>
-                                </div>
-                            </div>
-                            <div class="flex">
-                                <div class="flex my-2 items-center justify-content-center over cursor-pointer">
-                                    <div style="width: 130px; height: auto; padding : 2px ; border-radius: 10px">
-                                        <p-button icon="pi pi-heart" styleClass="p-button-help"></p-button>
-                                        <div *ngIf="publication.likes; else noLikes" >
-                                            {{publication.likes}}
-                                        </div>
-                                        <div #noLikes>
-                                            0 likes  
-
-                                        </div>
-                                    </div>
-                                    <div style="width: 130px; height: auto; padding : 2px ; border-radius: 10px">
-                                        <p-button icon="pi pi-heart" styleClass="p-button-help"></p-button>
-                                        <div *ngIf="publication.reacts; else noReacts" >
-                                            {{publication.reacts}}
-                                        </div>
-                                        <div #noReacts>
-                                            0 Reacts  
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex my-2" style="width: 100% ; justify-content: end">
-                                    <button mat-button
-                                        style="background: #3bab53; color: white ; padding: 5px!important;">Post</button>
-                                </div>
-                            </div>
-                        </div>
+                <p-table #dt2 [value]="publications" >
+                <!-- <div class="flex flex-wrap"> -->
+                    <div class="card flex justify-content-center">
+                        <p-card header="Feedback on">
+                            
+                        </p-card>
                     </div>
-
-                </div>
-
+                    <ng-template pTemplate="header" >
+                        <tr>
+                            <th>Search</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <p-columnFilter type="text" field="content"></p-columnFilter>
+                            </th>
+                        </tr>
+                    </ng-template>
+                <!-- </div> -->
+                <ng-template pTemplate="body" let-publication let-editing="editing" let-ri="rowIndex">
+                    <tr [pEditableRow]="publication">
+                        <td>
+                            <p-cellEditor>
+                                                                
+                                <ng-template pTemplate="input">
+                                    
+                                    <input pInputText type="text" [(ngModel)]="publication.content" required />
+                                </ng-template>
+                                <ng-template pTemplate="output" >
+                                    <div class="card flex justify-content-center">
+                                        <p-card header="">
+                                            <div class="m-0">
+                                                <p>
+                                                {{ publication.content }}
+                                                </p>
+                                                <p *ngIf="publication.reacts; else noReacts"> 
+                                                    0
+                                                </p>
+                                            </div>
+                                            <!-- <p class="m-0" >
+                                                {{ publication.reacts | count }}
+                                            </p> -->
+                                            <!-- <p  #noReacts>
+                                                0 
+                                            </p>
+                                            <p class="m-0"  *ngIf="publication.likes; else noComments">
+                                                {{ publication.comments | count }}
+                                            </p>
+                                            <p #noComments >
+                                                0
+                                            </p> -->
+                                        </p-card>
+                                    </div>
+                                    
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="5">No Publications found.</td>
+                    </tr>
+                </ng-template>
+            </p-table>
             </div>
         </div>
-    </div>
+    </div> 
