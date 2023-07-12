@@ -18,10 +18,7 @@ export class AddPublicationComponent {
     (value) => typeof value === 'string'
   );
   
-  public visibilities: any;
-  // public visibilities = Object.keys(Visibility).filter(
-  //     (value) => typeof value === 'string'
-  // );
+  
 
   constructor(
     private fb: FormBuilder,

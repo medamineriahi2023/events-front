@@ -19,16 +19,15 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 export class AddEventComponent implements OnInit {
     title: string;
     eventForm!: FormGroup;
-    // type: Type;
-    public Type2LabelMapping = Type2LabelMapping;
-    public Visibility2LabelMapping = Visibility2LabelMapping;
-    public types = Object.keys(Type).filter(
+    public type2LabelMapping = Type2LabelMapping;
+    public visibility2LabelMapping = Visibility2LabelMapping;
+    public types = Object.values(Type).filter(
         (value) => typeof value === 'string'
     );
-    public visibilities: any;
-    // public visibilities = Object.keys(Visibility).filter(
-    //     (value) => typeof value === 'string'
-    // );
+
+    public visibilities = Object.values(Visibility).filter(
+        (value) => typeof value === 'string'
+    );
 
     constructor(
         private fb: FormBuilder,
@@ -36,6 +35,7 @@ export class AddEventComponent implements OnInit {
         private messageService: MessageService,
         private confirmationService: ConfirmationService
     ) {
+        console.log(this.visibilities);
         console.log(Visibility2LabelMapping[Visibility.PRIVATE]);
         this.eventForm = this.fb.group({
             name: [''],
@@ -56,10 +56,7 @@ export class AddEventComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.visibilities = [
-            { name: Visibility2LabelMapping[0] },
-            { name: Visibility2LabelMapping[1] },
-        ];
+
     }
     @Input()
     @Output()
