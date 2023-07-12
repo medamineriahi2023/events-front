@@ -1,7 +1,7 @@
 export enum Type {
     ONLINE,PRESENTIEL
 }
-export const Type2LabelMapping: Record<Type, string> = {
-    [Type.ONLINE]: "Online",
-    [Type.PRESENTIEL]: "Presential",
-  };
+export const Type2LabelMapping: Record<string, string> = {
+    ["ONLINE"]: "Online",
+    ["PRESENTIEL"]: "Presential",
+};

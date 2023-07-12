@@ -36,29 +36,17 @@
             </span>
         </div>
         <div class="my-2 mt-5 pt-3">
-            <select name="type" id="type" formControlName="type">
-                <option *ngFor="let type of types" [value]="type">
-                    {{ Type2LabelMapping[type] }}
-                </option>
+            <select name="" id="" formControlName="type">
+                <option [ngValue]="null" disabled>Select a type</option>
+                <option *ngFor="let type of types" [ngValue]="type"  >{{type2LabelMapping[type]}}</option>
             </select>
         </div>
         <div class="my-2 mt-5 pt-3">
-            <select
-                name="visibility"
-                id="visibility"
-                formControlName="visibility"
-            >
-                <option
-                    *ngFor="let visibility of visibilities"
-                    [value]="visibilities"
-                >
-                    {{ Visibility2LabelMapping[visibility] }}
-                </option>
+            <select name="" id="" formControlName="visibility">
+                <option [ngValue]="null" disabled>Choose Audience</option>
+                <option *ngFor="let visibility of visibilities" [ngValue]="visibility"  >{{visibility2LabelMapping[visibility]}}</option>
             </select>
-            <p-dropdown
-                [options]="visibilities"
-                optionLabel="Visibility"
-            ></p-dropdown>
+            
         </div>
         <div class="my-2 mt-5 pt-3">
             <span class="p-float-label">

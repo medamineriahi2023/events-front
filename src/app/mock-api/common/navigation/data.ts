@@ -7,7 +7,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
         title: 'Forum',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/operations'
+        link : '/publications'
     },
     {
         id   : 'security',
@@ -22,6 +22,20 @@ export const defaultNavigation: FuseNavigationItem[] = [
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
         link : '/events'
+    },
+    {
+        id   : 'admin-event',
+        title: 'Admin Events',
+        type : 'basic',
+        icon : 'heroicons_outline:chart-pie',
+        link : '/admin-events'
+    },
+    {
+        id   : 'organizer-event',
+        title: 'Organizer Events',
+        type : 'basic',
+        icon : 'heroicons_outline:chart-pie',
+        link : '/organizer-events'
     }
 ];
 export const compactNavigation: FuseNavigationItem[] = [
@@ -30,7 +44,7 @@ export const compactNavigation: FuseNavigationItem[] = [
         title: 'Forum',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/operations'
+        link : '/publications'
     },
     {
         id   : 'security',
@@ -45,6 +59,20 @@ export const compactNavigation: FuseNavigationItem[] = [
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
         link : '/events'
+    },
+    {
+        id   : 'admin-event',
+        title: 'Admin Events',
+        type : 'basic',
+        icon : 'heroicons_outline:chart-pie',
+        link : '/admin-events'
+    },
+    {
+        id   : 'organizer-event',
+        title: 'Organizer Events',
+        type : 'basic',
+        icon : 'heroicons_outline:chart-pie',
+        link : '/organizer-events'
     }
 ];
 export const futuristicNavigation: FuseNavigationItem[] = [
@@ -53,7 +81,7 @@ export const futuristicNavigation: FuseNavigationItem[] = [
         title: 'Forum',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/operations'
+        link : '/publications'
     },
     {
         id   : 'security',
@@ -68,6 +96,20 @@ export const futuristicNavigation: FuseNavigationItem[] = [
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
         link : '/events'
+    },
+    {
+        id   : 'admin-event',
+        title: 'Admin Events',
+        type : 'basic',
+        icon : 'heroicons_outline:chart-pie',
+        link : '/admin-events'
+    },
+    {
+        id   : 'organizer-event',
+        title: 'Organizer Events',
+        type : 'basic',
+        icon : 'heroicons_outline:chart-pie',
+        link : '/organizer-events'
     }
 ];
 export const horizontalNavigation: FuseNavigationItem[] = [
@@ -76,7 +118,7 @@ export const horizontalNavigation: FuseNavigationItem[] = [
         title: 'Forum',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/operations'
+        link : '/publications'
     },
     {
         id   : 'security',
@@ -91,5 +133,19 @@ export const horizontalNavigation: FuseNavigationItem[] = [
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
         link : '/events'
+    },
+    {
+        id   : 'admin-event',
+        title: 'Admin Events',
+        type : 'basic',
+        icon : 'heroicons_outline:chart-pie',
+        link : '/admin-events'
+    },
+    {
+        id   : 'organizer-event',
+        title: 'Organizer Events',
+        type : 'basic',
+        icon : 'heroicons_outline:chart-pie',
+        link : '/organizer-events'
     }
 ];
