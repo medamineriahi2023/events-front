@@ -4,7 +4,7 @@ import { EventsListComponent } from './events-list/events-list.component';
 
 const routes: Routes = [
   {
-    path: '', component: EventsListComponent
+    path :'', component: EventsListComponent
   }
 ];
 
