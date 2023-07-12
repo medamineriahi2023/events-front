@@ -51,10 +51,7 @@ export class EventsService extends AbstractServiceService<Event> {
     getEventsByLocation(locationName: string): Observable<Event[]> {
         return this.http.get<Event[]>(this.url + `/name/${locationName}`);
     }
-<<<<<<< HEAD
-=======
     getEventsOfOrganizer(organizerId: string): Observable<Event[]> {
         return this.http.get<Event[]>(this.url + `/organizer/${organizerId}`);
     }
->>>>>>> 37c8248db68fcfc45e7f81f6c03a6c38b45661d3
 }
