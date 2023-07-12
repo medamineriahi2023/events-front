@@ -51,6 +51,9 @@ export class EventsListComponent implements OnInit {
             .getPresentielEvents()
             .subscribe((events) => (this.events = events));
     }
+    getOwnerEvents() {
+        this.eventsService.getOwnerEvents(this.connectedUser.id).subscribe((events => this.events = events))
+    }
 
     filterEvents(searchTerm: string) {
         const filteredName = searchTerm.toLowerCase().trim();

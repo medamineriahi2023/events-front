@@ -31,7 +31,15 @@
                     value="presentiel"
                     (change)="getPresentielEvents()"
                 />
-                On-Site
+                On-Site </label
+            ><label>
+                <input
+                    type="checkbox"
+                    name="filterOption"
+                    value="Owning"
+                    (change)="getOwnerEvents()"
+                />
+                Owner
             </label>
             <p-button
                 (click)="showAddUser()"
@@ -42,11 +50,11 @@
         </div>
     </div>
 
-    <div
-        class="eventsContainer"
-        *ngFor="let event of filtering ? filteredEvents : events"
-    >
-        <a [routerLink]="[event.id]">
+    <div class="eventsContainer">
+        <a
+            [routerLink]="[event.id]"
+            *ngFor="let event of filtering ? filteredEvents : events"
+        >
             <div class="eventCard">
                 <!-- [style.background-color]="
                     connectedUser.id === event.organizer.id && 'green'

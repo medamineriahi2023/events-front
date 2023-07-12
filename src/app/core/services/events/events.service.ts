@@ -38,13 +38,17 @@ export class EventsService extends AbstractServiceService<Event> {
         return this.http.get<Event[]>(this.url + `/presentiel`);
     }
 
+    getOwnerEvents(id: string): Observable<Event[]> {
+        return this.http.get<Event[]>(this.url + `/organizer/${id}`);
+    }
+
     getEventsByName(name: string): Observable<Event[]> {
         return this.http.get<Event[]>(this.url + `/name/${name}`);
     }
     getEventsByCategory(categoryId: string): Observable<Event[]> {
-      return this.http.get<Event[]>(this.url + `/category/${categoryId}`);
-  }
-  getEventsByLocation(locationName: string): Observable<Event[]> {
-    return this.http.get<Event[]>(this.url + `/name/${locationName}`);
-}
+        return this.http.get<Event[]>(this.url + `/category/${categoryId}`);
+    }
+    getEventsByLocation(locationName: string): Observable<Event[]> {
+        return this.http.get<Event[]>(this.url + `/name/${locationName}`);
+    }
 }
