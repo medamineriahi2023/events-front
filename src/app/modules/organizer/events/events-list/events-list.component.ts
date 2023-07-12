@@ -13,7 +13,7 @@ export class EventsListComponent {
   events: Event[];
 
   constructor(private eventsService: EventsService) {
-    this.eventsService.getAll().subscribe((data) => {
+    this.eventsService.getEventsOfOrganizer("91139759-a628-4a68-9aa6-dd38262ebc7c").subscribe((data) => {
       this.events = data;
     });
   }
