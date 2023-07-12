@@ -51,6 +51,9 @@ export const appRoutes: Route[] = [
             {path: 'admin-events', loadChildren: () => import('app/modules/participant/events/events.module').then(m => m.EventsModule)},
             {path: 'organizer-events', loadChildren: () => import('app/modules/organizer/events/events.module').then(m => m.EventsModule)},
             {path: 'unauthorized', loadChildren: () => import('app/modules/admin/UnauthorizedPage/unauthorized.module').then(m => m.UnauthorizedModule)},
+            {path: 'publications', loadChildren: () => import('app/modules/participant/publications/publications.module').then(m => m.PublicationsModule)},
+
         ]
+
     }
 ];

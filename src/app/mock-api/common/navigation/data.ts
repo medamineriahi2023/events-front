@@ -7,7 +7,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
         title: 'Forum',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/operations'
+        link : '/publications'
     },
     {
         id   : 'security',
@@ -44,7 +44,7 @@ export const compactNavigation: FuseNavigationItem[] = [
         title: 'Forum',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/operations'
+        link : '/publications'
     },
     {
         id   : 'security',
@@ -81,7 +81,7 @@ export const futuristicNavigation: FuseNavigationItem[] = [
         title: 'Forum',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/operations'
+        link : '/publications'
     },
     {
         id   : 'security',
@@ -118,7 +118,7 @@ export const horizontalNavigation: FuseNavigationItem[] = [
         title: 'Forum',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/operations'
+        link : '/publications'
     },
     {
         id   : 'security',
