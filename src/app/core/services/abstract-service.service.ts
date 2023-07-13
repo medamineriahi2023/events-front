@@ -26,7 +26,7 @@ export abstract class AbstractServiceService<T> {
     }
 
     update(operation: any){
-        return this.http.put<T[]>(this.url, operation);
+        return this.http.put<T>(this.url, operation);
     }
 
     get(operationId: any){

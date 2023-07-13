@@ -15,11 +15,13 @@ import { RippleModule } from 'primeng/ripple';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TagModule } from 'primeng/tag';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { MyEventsComponent } from './my-events/my-events.component';
 
 @NgModule({
   declarations: [
     EventsListComponent,
-    EventPreviewComponent
+    EventPreviewComponent,
+    MyEventsComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +38,9 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     RippleModule,
     ToastModule,
     ConfirmDialogModule
+  ],
+  exports: [
+    MyEventsComponent
   ],
   providers: [MessageService, ConfirmationService]
 })

@@ -14,6 +14,10 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TabViewModule } from 'primeng/tabview';
+import { TableModule } from 'primeng/table';
+
 
 @NgModule({
     declarations: [
@@ -32,7 +36,10 @@ import { InputTextModule } from 'primeng/inputtext';
         ButtonModule,
         DropdownModule,
         CalendarModule,
-        InputTextModule
+        InputTextModule,
+        ConfirmDialogModule,
+        TabViewModule,
+        TableModule
     ],
     providers: [MessageService, ConfirmationService],
 })

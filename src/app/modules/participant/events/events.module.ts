@@ -14,11 +14,22 @@ import { RippleModule } from 'primeng/ripple';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
-
+import { MainComponent } from './main/main.component';
+import { AllEventsComponent } from './all-events/all-events.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
+import { CalendarModule } from 'primeng/calendar';
+import { MyEventsComponent } from './my-events/my-events.component';
+import { TabViewModule } from 'primeng/tabview';
+import { AddEventComponent } from './add-event/add-event.component';
 
 @NgModule({
   declarations: [
-    EventsListComponent
+    EventsListComponent,
+    MainComponent,
+    AllEventsComponent,
+    EventDetailsComponent,
+    MyEventsComponent,
+    AddEventComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +45,9 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     // MultiSelectModule,
     RippleModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    TabViewModule,
+    CalendarModule
   ],
   providers: [MessageService, ConfirmationService]
 })
