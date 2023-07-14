@@ -8,7 +8,7 @@
         <div class="my-2 mt-5 pt-3">
             <span class="p-float-label">
                 <input pInputText id="name" formControlName="name" />
-                <label htmlFor="username">Choose a name for the event</label>
+                <label htmlFor="username">Event name</label>
             </span>
         </div>
         <div class="my-2 mt-5 pt-3 dateContainer">
@@ -49,10 +49,10 @@
             
         </div>
         <div class="my-2 mt-5 pt-3">
-            <span class="p-float-label">
-                <input pInputText id="category" formControlName="category" />
-                <label htmlFor="category">Category</label>
-            </span>
+            <select name="" id="" formControlName="category">
+                <option [ngValue]="null" disabled>Choose Category</option>
+                <option *ngFor="let category of categories" [ngValue]="category.id"  >{{category.name}}</option>
+            </select>
         </div>
         <div class="my-2 mt-5 pt-3">
             <span class="p-float-label">
@@ -91,10 +91,10 @@
             </span>
         </div>
         <div class="my-2 mt-5 pt-3">
-            <span class="p-float-label">
-                <input pInputText id="location" formControlName="location" />
-                <label htmlFor="location">Location</label>
-            </span>
+            <select name="" id="" formControlName="location">
+                <option [ngValue]="null" disabled>Choose Location</option>
+                <option *ngFor="let location of locations" [ngValue]="location.id"  >{{location.govName}}</option>
+            </select>
         </div>
         <div class="my-2 mt-5 pt-3">
             <span class="p-float-label">
