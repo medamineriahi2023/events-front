@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { EventsRoutingModule } from './events-routing.module';
-import { CreateEventComponent } from './create-event/create-event.component';
 import { EventsListComponent } from './events-list/events-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddEventComponent } from './add-event/add-event.component';
@@ -21,7 +20,6 @@ import { TableModule } from 'primeng/table';
 
 @NgModule({
     declarations: [
-        CreateEventComponent,
         EventsListComponent,
         AddEventComponent,
         EventDetailsComponent,

@@ -2,8 +2,11 @@ import { Component, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { EventsService } from 'app/core/services/events/events.service';
 import { Category } from 'app/models/Category';
+import { Event } from 'app/models/Event';
 import { Type, Type2LabelMapping } from 'app/models/Type';
+import { User } from 'app/models/User';
 import { Visibility, Visibility2LabelMapping } from 'app/models/Visibility';
+import { KeycloakService } from 'keycloak-angular';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
@@ -28,7 +31,8 @@ export class AddEventComponent {
       private fb: FormBuilder,
       private eventsService: EventsService,
       private messageService: MessageService,
-      private confirmationService: ConfirmationService
+      private confirmationService: ConfirmationService,
+      private keycloakService: KeycloakService
   ) {
       console.log(this.visibilities);
       console.log(Visibility2LabelMapping[Visibility.PRIVATE]);
@@ -57,13 +61,35 @@ export class AddEventComponent {
   @Output()
   visible: false;
   onAddEvent() {
-      // console log type property
+      let event : Event = new Event();
       console.log(this.eventForm.value);
-      // if (this.eventForm.valid) {
-      //   this.eventsService.save(this.eventForm.value).subscribe((data) => {
-      //     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Event added successfully' });
-      //   });
-      // }
+
+      if (this.eventForm.valid) {
+        
+          this.keycloakService.loadUserProfile().then(u => {
+            const organizer: User = {id: u.id};
+            let event : Event = new Event();
+            event.name = this.eventForm.value.content;
+            event.dateDebutEvent = this.eventForm.value.dateDebut;
+            event.dateFinEvent = this.eventForm.value.dateFinEvent;
+            event.type = this.eventForm.value.type;
+            event.visibility = this.eventForm.value.visibility;
+            event.organizer = organizer
+            event.backgroundImage = this.eventForm.value.backgroundImage;
+            event.eventImage = this.eventForm.value.eventImage;
+            event.video = this.eventForm.value.video;
+            event.archived = false;
+            event.description = this.eventForm.value.description,
+            event.location = this.eventForm.value.location;
+            event.locationName = this.eventForm.value.locationName;
+            event.rue = this.eventForm.value.rue;
+            event.zipCode = this.eventForm.value.zipCode;
+            
+            // this.eventsService.save(event).subscribe((data) => {
+            //   this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Publication created successfully' });
+            // });
+          });
+      }
   }
 
 }
