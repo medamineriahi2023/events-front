@@ -24,20 +24,15 @@ export class MainComponent {
       console.log(this.messages);
       this.keycloakService.loadUserProfile().then(u => {
         this.messages.forEach((message)=> {
+          console.log(message, u);
           if (message.receiver.id === u.id) {
-            console.log("z")
-            console.log("receiver: " + message.receiver.id, u.id)
-            if (this.panels.filter(e => e.id !== message.sender.id).length > 0) {
+            if (this.panels.filter(e => e.id === message.sender.id).length == 0) {
               this.panels.push({ "id": message.sender.id, "username": message.sender.username });
               console.log("panels" + this.panels.toString());
             }
           }
-          console.log(message.sender.id, u.id)
-          console.log(this.panels)
           if (message.sender.id === u.id) {
-            console.log("a")
             if (this.panels.filter(e => e.id === message.receiver.id).length == 0) {
-              console.log("b")
               this.panels.push({ "id": message.receiver.id, "username": message.receiver.username });
               console.log("panels" + this.panels.toString());
             }
@@ -55,6 +50,8 @@ export class MainComponent {
     this.filteredMessages = [];
     console.log(comp)
     this.messages.forEach((value)=> {
+      console.log(value.receiver, value.sender)
+      console.log(comp)
       if (value.receiver.id  === comp || value.sender.id === comp) {
         console.log(this.filteredMessages);
         this.filteredMessages.push(value);
