@@ -18,19 +18,19 @@
         <!-- <div class="flex flex-wrap"> -->
             <ng-template pTemplate="header" >
                 <tr>
-                    <th>name</th>
-                    <th>category</th>
+                    <th>Name</th>
+                    <th>Organizer</th>
+                    <th>Category</th>
                     <th>Date debut</th>
                     <th>Date fin</th>
                     <th>Archived</th>
-                    
-                    <!-- <th>Password</th>
-                    <th>Role</th>
-                    <th>Actions</th> -->
                 </tr>
                 <tr>
                     <th>
                         <p-columnFilter type="text" field="name"></p-columnFilter>
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="organizer_id"></p-columnFilter>
                     </th>
                     <th>
                         <p-columnFilter type="text" field="category.name"></p-columnFilter>
@@ -44,24 +44,6 @@
                     <th>
                         <p-columnFilter type="boolean" field="archived"></p-columnFilter>
                     </th>
-                    <!-- <th>
-                        <p-columnFilter type="text" field="password"></p-columnFilter>
-                    </th>
-                    <th>
-                        <p-columnFilter field="role" matchMode="equals" [showMenu]="false">
-                            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                                <p-dropdown [ngModel]="value" [options]="roles" (onChange)="filter($event.value)"
-                                    placeholder="Select Role" [showClear]="true">
-                                    <ng-template let-role pTemplate="item">
-                                        <p-tag [value]="role" [severity]="getSeverity(role)"></p-tag>
-                                    </ng-template>
-                                </p-dropdown>
-                            </ng-template>
-                        </p-columnFilter>
-                    </th>
-                    <th>
-
-                    </th> -->
                 </tr>
             </ng-template>
         <!-- </div> -->
@@ -74,6 +56,16 @@
                         </ng-template>
                         <ng-template pTemplate="output">
                             {{ event.name }}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="event.organizer.username" required />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ event.organizer.username }}
                         </ng-template>
                     </p-cellEditor>
                 </td>
@@ -116,42 +108,6 @@
                             {{ event.archived }}
                         </ng-template>
                     </p-cellEditor>
-                </td>
-                <!-- <td>
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="user.password" required />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ user.password }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                <td>
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <p-dropdown [options]="roles" appendTo="body" [(ngModel)]="user.role"
-                                [style]="{'width':'100%'}"></p-dropdown>
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            <p-tag [value]="user.role" [severity]="getSeverity(user.role)"></p-tag>
-
-                        </ng-template>
-                    </p-cellEditor>
-                </td> -->
-                <td>
-                    <div class="flex align-items-center justify-content-start gap-2">
-                        <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"
-                            (click)="onRowEditInit(event)" class="p-button-rounded p-button-text"></button>
-                        <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check"
-                            (click)="onRowEditSave(event)"
-                            class="p-button-rounded p-button-text p-button-success mr-2"></button>
-                        <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times"
-                            (click)="onRowEditCancel(event,ri)"
-                            class="p-button-rounded p-button-text p-button-danger"></button>
-                        <button pButton pRipple type="button" icon="pi pi-trash" (click)="deleteUser(event)"
-                            class="p-button-rounded p-button-text p-button-danger"></button>
-                    </div>
                 </td>
             </tr>
         </ng-template>
