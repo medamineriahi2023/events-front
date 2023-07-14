@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EventsService } from 'app/core/services/events/events.service';
 import { Event } from 'app/models/Event';
+import { KeycloakService } from 'keycloak-angular';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
@@ -11,11 +12,14 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 export class MyEventsComponent {
   events: Event[];
   clonedEvents: { [s: number]: Event } = {};
-  constructor(private eventsService: EventsService, private messageService: MessageService, private confirmationService: ConfirmationService) {
-    this.eventsService.getEventsOfOrganizer("91139759-a628-4a68-9aa6-dd38262ebc7c").subscribe((data) => {
-      this.events = data;
-      console.log(this.events);
+  constructor(private eventsService: EventsService, private messageService: MessageService, private confirmationService: ConfirmationService, private keycloakService: KeycloakService) {
+    this.keycloakService.loadUserProfile().then(e => {
+      this.eventsService.getEventsOfOrganizer(e.id).subscribe((data) => {
+        this.events = data;
+        console.log(this.events);
+      });
     });
+
   }
   onRowEditSave(event: Event) {
     console.log(event);

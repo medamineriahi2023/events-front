@@ -7,7 +7,6 @@
         [globalFilterFields]="['name','category.name']" [tableStyle]="{ 'max-width': '100rem' }">
         <ng-template pTemplate="caption">
             <div class="flex justify-content-between flex-wrap">
-                <p-button (click)="showAddUser()" icon="pi pi-user-plus" label="Create" class="mb-2"></p-button>
                 <span class="p-input-icon-left ml-auto">
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt2.filterGlobal($any($event.target).value, 'contains')"

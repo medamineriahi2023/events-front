@@ -23,9 +23,6 @@
                     <th>Date debut</th>
                     <th>Date fin</th>
                     <th>Archived</th>
-<!--                     
-                    <th>Password</th>
-                    <th>Role</th> -->
                     <th>Actions</th>
                 </tr>
                 <tr>
@@ -45,24 +42,7 @@
                         <p-columnFilter type="boolean" field="archived"></p-columnFilter>
                     </th>
                     <th></th>
-                    <!-- <th>
-                        <p-columnFilter type="text" field="password"></p-columnFilter>
-                    </th>
-                    <th>
-                        <p-columnFilter field="role" matchMode="equals" [showMenu]="false">
-                            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                                <p-dropdown [ngModel]="value" [options]="roles" (onChange)="filter($event.value)"
-                                    placeholder="Select Role" [showClear]="true">
-                                    <ng-template let-role pTemplate="item">
-                                        <p-tag [value]="role" [severity]="getSeverity(role)"></p-tag>
-                                    </ng-template>
-                                </p-dropdown>
-                            </ng-template>
-                        </p-columnFilter>
-                    </th>
-                    <th>
-
-                    </th> -->
+                    
                 </tr>
             </ng-template>
         <!-- </div> -->
@@ -118,28 +98,6 @@
                         </ng-template>
                     </p-cellEditor>
                 </td>
-                <!-- <td>
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="user.password" required />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ user.password }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                <td>
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <p-dropdown [options]="roles" appendTo="body" [(ngModel)]="user.role"
-                                [style]="{'width':'100%'}"></p-dropdown>
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            <p-tag [value]="user.role" [severity]="getSeverity(user.role)"></p-tag>
-
-                        </ng-template>
-                    </p-cellEditor>
-                </td> -->
                 <td>
                     <div class="flex align-items-center justify-content-start gap-2">
                         <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"
