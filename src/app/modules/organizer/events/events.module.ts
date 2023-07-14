@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { EventsRoutingModule } from './events-routing.module';
-import { EventsListComponent } from './events-list/events-list.component';
-import { EventPreviewComponent } from './event-preview/event-preview.component';
 import {TableModule} from 'primeng/table';
 import {ToastModule} from 'primeng/toast';
 import {ButtonModule} from 'primeng/button';
@@ -16,6 +13,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TagModule } from 'primeng/tag';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { MyEventsComponent } from './my-events/my-events.component';
+import { EventsListComponent } from './events-list/events-list.component';
+import { EventPreviewComponent } from './event-preview/event-preview.component';
+import { EventsRoutingModule } from './events-routing.module';
 
 @NgModule({
   declarations: [

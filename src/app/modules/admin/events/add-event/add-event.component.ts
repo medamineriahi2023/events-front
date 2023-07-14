@@ -9,6 +9,7 @@ import { EventsService } from 'app/core/services/events/events.service';
 import { Category } from 'app/models/Category';
 import { Type, Type2LabelMapping } from 'app/models/Type';
 import { Visibility, Visibility2LabelMapping } from 'app/models/Visibility';
+
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({

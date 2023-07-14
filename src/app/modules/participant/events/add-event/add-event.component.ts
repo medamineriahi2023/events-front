@@ -9,7 +9,6 @@ import { Location } from 'app/models/Location';
 import { Type, Type2LabelMapping } from 'app/models/Type';
 import { User } from 'app/models/User';
 import { Visibility, Visibility2LabelMapping } from 'app/models/Visibility';
-import { KeycloakService } from 'keycloak-angular';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
