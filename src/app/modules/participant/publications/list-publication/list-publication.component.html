@@ -54,11 +54,8 @@
 
                                                         <p *ngIf="publication.reacts; else noReacts" style="justify-content: end;" >
                                                             <p-button icon="pi pi-heart" styleClass="p-button-rounded p-button-help p-button-outlined"></p-button>
-
-                                                            <p-button icon="pi pi-comments" styleClass="p-button-rounded p-button-help p-button-outlined"></p-button>
-                                                            
-                                                     
-                                                            0 
+                                                            <p-button icon="pi pi-thumbs-down" styleClass="p-button-rounded p-button-danger p-button-outlined"></p-button>
+                                                            <p-button icon="pi pi-comments" styleClass="p-button-rounded p-button-help p-button-outlined"></p-button> 
                                                         </p>
                                                     </div>
                                                 </mat-card-actions>
@@ -66,12 +63,12 @@
                                                                                     
                                            
                                             
-                                            <!-- <p class="m-0" >
+                                            <!--<p class="m-0" >
                                                 {{ publication.reacts | count }}
-                                            </p> -->
-                                            <!-- <p  #noReacts>
-                                                0 
                                             </p>
+                                           <p  #noReacts>
+                                                0 
+                                            </p> 
                                             <p class="m-0"  *ngIf="publication.likes; else noComments">
                                                 {{ publication.comments | count }}
                                             </p>
