@@ -36,6 +36,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
         link : '/organizer-events'
+    },
+    {
+        id   : 'inbox',
+        title: 'Inbox',
+        type : 'basic',
+        icon : 'heroicons_outline:inbox',
+        link : '/inbox'
     }
 ];
 export const compactNavigation: FuseNavigationItem[] = [
@@ -73,6 +80,13 @@ export const compactNavigation: FuseNavigationItem[] = [
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
         link : '/organizer-events'
+    },
+    {
+        id   : 'ibox',
+        title: 'Inbox',
+        type : 'basic',
+        icon : 'heroicons_outline:inbox',
+        link : '/inbox'
     }
 ];
 export const futuristicNavigation: FuseNavigationItem[] = [
@@ -110,6 +124,13 @@ export const futuristicNavigation: FuseNavigationItem[] = [
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
         link : '/organizer-events'
+    },
+    {
+        id   : 'inbox',
+        title: 'Inbox',
+        type : 'basic',
+        icon : 'heroicons_outline:inbox',
+        link : '/inbox'
     }
 ];
 export const horizontalNavigation: FuseNavigationItem[] = [
@@ -147,5 +168,12 @@ export const horizontalNavigation: FuseNavigationItem[] = [
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
         link : '/organizer-events'
+    },
+    {
+        id   : 'inbox',
+        title: 'Inbox',
+        type : 'basic',
+        icon : 'heroicons_outline:inbox',
+        link : '/inbox'
     }
 ];

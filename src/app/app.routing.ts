@@ -52,6 +52,7 @@ export const appRoutes: Route[] = [
             {path: 'organizer-events', loadChildren: () => import('app/modules/organizer/events/events.module').then(m => m.EventsModule)},
             {path: 'unauthorized', loadChildren: () => import('app/modules/admin/UnauthorizedPage/unauthorized.module').then(m => m.UnauthorizedModule)},
             {path: 'publications', loadChildren: () => import('app/modules/participant/publications/publications.module').then(m => m.PublicationsModule)},
+            {path: 'inbox', loadChildren: () => import('app/modules/messages/messages.module').then(m => m.MessagesModule)}
 
         ]
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EventsService } from 'app/core/services/events/events.service';
 import { Event } from 'app/models/Event';
+
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
