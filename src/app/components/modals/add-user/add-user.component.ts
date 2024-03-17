@@ -76,13 +76,13 @@ export class AddUserComponent implements OnInit, AfterViewInit{
             location.id = this.locationList.value;
             this.user.locationDto = location;
             this.userService.save(this.user).subscribe(u => { this.messageService.add({ severity: 'success', summary: 'Success', detail: 'User added successfully' });this.dialogRef.close(true)},
-                error => {this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error });});
+                error => {this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message });});
         }else {
             location.id = this.data?.locationDto?.id;
             this.user.locationDto = location;
             this.user.id = this.data?.id;
             this.userService.update(this.user).subscribe(u  => { this.messageService.add({ severity: 'success', summary: 'Success', detail: 'User edited successfully' });this.dialogRef.close(true)},
-                error => {this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error });});
+                error => {this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message });});
         }
 
 

@@ -43,12 +43,12 @@ export class AddEditRoleComponent {
         if (this.operation === "Save"){
             this.userService.saveRole(this.role.name).subscribe(e => {this.dialogRef.close();
                 this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Role is added successfully' });
-            }, error => {this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error });})
+            }, error => {this.messageService.add({ severity: 'error', summary: 'Error', detail: "Error occurred" });})
         }else {
             this.role.id = this.data.id;
             this.userService.updateRole(this.role).subscribe(e  => {this.dialogRef.close();
                 this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Role is edited successfully' });
-            }, error => {this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error });})
+            }, error => {this.messageService.add({ severity: 'error', summary: 'Error', detail: "Error occurred"});})
         }
         this.submitted = true;
 

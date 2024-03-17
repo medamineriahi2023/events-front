@@ -62,8 +62,7 @@ export class UserTableComponent implements OnInit, AfterViewInit{
 
     listenForDataChnages() {
 
-        this.userService.getAll().subscribe(u => {this.dataSource.data = u ; this.refresh = false;});
-        this.userService.getRoles().subscribe(u => {this.roles = u});
+        this.userService.getAll().subscribe(u => {this.dataSource.data = u["users"]; this.roles = u["users"].flatMap(e => e.roles) ;this.refresh = false;});
 
     }
 

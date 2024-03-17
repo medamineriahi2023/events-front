@@ -53,7 +53,7 @@ export class EditPermissionComponent implements AfterViewInit{
         this.userService.assignCompositeRolesForRole(roleId, rolesIds).subscribe(u => { this.dialogRef.close(true);
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Permission(s) added successfully' });
         }, error => {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error });
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message });
         });
 
     }

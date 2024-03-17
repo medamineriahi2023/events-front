@@ -9,7 +9,7 @@ import {AuthGuard} from "./core/auth/kc-config/authGuard";
 export const appRoutes: Route[] = [
 
     // Redirect empty path to '/example'
-    {path: '', pathMatch : 'full', redirectTo: 'operations'},
+    {path: '', pathMatch : 'full', redirectTo: 'security'},
 
     // Redirect signed-in user to the '/example'
     //
@@ -46,7 +46,6 @@ export const appRoutes: Route[] = [
         },
         children: [
             {path: 'security', loadChildren: () => import('app/modules/admin/security/security.module').then(m => m.SecurityModule)},
-            {path: 'operations', loadChildren: () => import('app/modules/admin/operations/operations.module').then(m => m.OperationsModule)},
             {path: 'unauthorized', loadChildren: () => import('app/modules/admin/UnauthorizedPage/unauthorized.module').then(m => m.UnauthorizedModule)},
         ]
     }

@@ -91,7 +91,7 @@ export class RoleTableComponent implements OnChanges, OnInit, AfterViewInit{
             if (res) {
                 this.userService.deleteRole(role.name).subscribe(e => {
                     this.listenForDataChnages(); this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Role deleted successfully' });},error => {
-                    this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error });
+                    this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message });
                 });
             }
         });
